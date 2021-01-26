@@ -1,0 +1,349 @@
+snippet trc "Trace for debug compose/pipe"
+    const trace = (x) => (y) => {
+        console.log(x, y);
+        return y;
+    };
+
+snippet dsc
+abbr describe test
+    describe('${1}', (${2}) => {
+      ${3}
+    });
+
+snippet it
+abbr it test
+    it('${1}', (${2}) => {
+      ${3}
+    });
+
+snippet dtrc "Debug trace"
+    trace('After of ${1}:'),
+
+snippet sct "Self Closing tag"
+    <$1 />
+
+snippet oct "Open Close tag"
+    <${1}>${2}</$1>
+
+snippet imr
+abbr Import React
+    import React from 'react';
+
+snippet rafc
+abbr Ract Functional Component
+    export const ${1} = () => {
+      return(
+        <>
+          ${2}
+        </>
+      )
+    }
+
+snippet rrcc
+abbr React Redux Class Component
+    import React, { Component } from 'react';
+    import PropTypes from 'prop-types';
+    import { connect } from 'react-redux';
+    import styles from './${2:$1}.css';
+
+    class ${1} extends Component {
+        static propTypes = {
+            children: PropTypes.node,
+            className: PropTypes.string,
+            dispatch: PropTypes.func.isRequired,
+        };
+
+        constructor(props) {
+            super(props);
+        }
+
+        render() {
+            return (
+                <div className={styles.base}>
+                    ${3}
+                </div>
+            );
+        }
+    }
+
+    function mapStateToProps(state) {
+        return {};
+    }
+
+    export default connect(mapStateToProps)(${1});
+
+snippet rcc
+abbr React Class Component
+    import React, { Component } from 'react';
+    import PropTypes from 'prop-types';
+    import styles from './${2:$1}.css';
+
+    class ${1} extends Component {
+        static propTypes = {
+            ${2:children: PropTypes.node,
+            className: PropTypes.string,}
+        };
+
+        constructor(props) {
+            super(props);
+        }
+
+        render() {
+            return (
+                <${3:div} className={styles.base}>
+                    ${0}
+                </${3}>
+            );
+        }
+    }
+
+    export default ${1};
+
+snippet rfcp
+abbr React Functional Component PropTypes
+    import PropTypes from 'prop-types';
+    import styles from './${2:$1}.css';
+
+    const ${1} = ({ ${3} }) {
+        return (
+            <${5} className={styles.base}>
+                ${0}
+            </${2:$5}>
+        );
+    }
+
+    ${3:$1}.defaultProps = {${4}};
+
+    ${4:$1}.propTypes = {
+      ${2:$3}
+    };
+
+    export default ${5:$1};
+
+snippet rsc
+abbr React Styled Component
+    import styled from 'styled-components';
+
+    const ${1} = styled.${2:div}\`
+        ${3}
+    \`;
+
+    export default ${1};
+
+snippet rsci
+abbr React Styled Component Interpolation
+    import styled, { css } from 'styled-components';
+
+    const ${1} = styled.${2:div}\`${props => css\`
+        ${3:${props.${4} && \`
+            ${5}
+        \`}}
+    \`}\`;
+
+    export default ${1};
+
+snippet pp
+abbr Get Props
+    ${props => props.${1}};
+
+snippet cn
+abbr className
+    className="${1}"
+
+snippet dp
+abbr Default Props
+    ${1}.defaultProps = {
+        ${2}
+    };
+
+snippet set
+abbr Set State
+    this.setState({
+        ${1}: ${2}
+    });
+
+snippet props
+abbr Get Property
+    this.props.${1}
+
+snippet state
+abbr Get State
+    this.state.${1}
+
+snippet ref
+abbr Ref
+    ref={${1:ref} => { this.${2:name} = ${1}; }}
+
+
+snippet cwm
+abbr Component Will Mount
+    componentWillMount() {
+        ${1}
+    }
+
+snippet cdm
+abbr Component Did Mount
+    componentDidMount() {
+        ${1}
+    }
+
+snippet cwrp
+abbr Component Will Receive Props
+    componentWillReceiveProps(nextProps) {
+        ${1}
+    }
+
+snippet scup
+abbr Should Component Update
+    shouldComponentUpdate(nextProps, nextState) {
+        ${1}
+    }
+
+snippet cwup
+abbr Component Will Update
+    componentWillUpdate(nextProps, nextState) {
+        ${1}
+    }
+
+snippet cdup
+abbr Component Did Update
+    componentDidUpdate(prevProps, prevState) {
+        ${1}
+    }
+
+snippet cwu
+abbr Component Will Unmount
+    componentWillUnmount() {
+        ${1}
+    }
+
+snippet ren
+abbr Render
+    render() {
+        return ${1:(
+            ${2:<div>${3}</div>}
+        );}
+    }
+
+
+snippet pt
+abbr PropTypes Definition
+    ${1}.propTypes = {
+        ${2:className}: ${3:PropTypes.string},
+    };
+
+snippet  pt.a
+abbr PropTypes Array
+    PropTypes.array${1:,}
+
+snippet   pt.b
+abbr PropTypes Boolean
+    PropTypes.bool${1:,}
+
+snippet pt.f
+abbr PropTypes Function
+    PropTypes.func${1:,}
+
+snippet pt.n
+abbr PropTypes Number
+    PropTypes.number${1:,}
+
+snippet pt.o
+abbr PropTypes Object
+    PropTypes.object${1:,}
+
+snippet pt.s
+abbr PropType String
+    PropTypes.string${1:,}
+
+snippet pt.no
+abbr PropTypes Node
+    PropTypes.node${1:,}
+
+snippet pt.e
+abbr PropTypes Element
+    PropTypes.element${1:,}
+
+snippet pt.io
+abbr PropTypes instanceOf
+    PropTypes.instanceOf(${2:PropTypes.string})${1:,}
+
+snippet pt.one
+abbr PropTypes oneOf
+    PropTypes.oneOf(['${2}'${3}])${1:,}
+
+snippet pt.onet
+abbr PropTypes oneOfType
+    PropTypes.oneOfType([
+        ${2}
+    ])${1:,}
+
+snippet pt.ao
+abbr PropTypes arrayOf
+    PropTypes.arrayOf(${2:PropTypes.string})${1:,}
+
+snippet pt.oo
+abbr PropTypes objectOf
+    PropTypes.objectOf(${2:PropTypes.string})${1:,}
+
+snippet pt.sh
+abbr PropTyes Shape
+    PropTypes.shape({
+        ${2}
+    })${1:,}
+
+snippet ir
+abbr isRequired
+    isRequired,
+
+snippet us.s
+abbr useState
+    const [${1}, set${1/\w+\s*/\u${0}/g}] = useState(${3:''})${0:;}
+
+snippet us.e
+abbr useEffect
+    useEffect(() => {
+        ${1}
+    })${0:;}
+
+snippet us.er
+abbr useEffect with return
+    useEffect(() => {
+        ${1}
+        return () => {
+            ${2}
+        };
+    })${0:;}
+
+snippet us.c
+abbr useContext
+    const ${1} = useContext(${2})${0:;}
+
+snippet us.r
+abbr useReducer
+    const [${1}, dispatch] = useReducer(${1}Reducer, ${2:${VISUAL:initialState}})
+    const ${1}Reducer = (state, action) => {
+        switch (action.type) {
+            default:
+                return state;
+        }
+    }${0:;}
+
+snippet us.cb
+abbr useCallback
+    useCallback(
+        () => {
+            ${1}
+        },
+        [${2}],
+    )${0:;}
+
+snippet us.m
+abbr useMemo
+    const ${1} = useMemo(() => {
+        ${2}
+    }, [${3}])${0:;}
+
+snippet us.rf
+abbr useRef
+    const ${1} = useRef(${2})${0:;}
